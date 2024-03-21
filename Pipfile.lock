@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b3f162bfb6d6acd0e5ed8352466b8a71d171b2818c5b2d93608940d442acf68f"
+            "sha256": "ba9ba33e6b561e4614fb9f3d1aa53f46829f0b958ce3e24b972cd809639a3bbb"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -388,13 +388,13 @@
         },
         "gpt4all": {
             "hashes": [
-                "sha256:108550670df21847d1c8fc956630f6300233a00ec8ba68cbfc0e23e00ec8456a",
-                "sha256:28a6d79bbd08ff2b98eb2197e6cdcffbd2f0020c5be00467e814f81894f092ad",
-                "sha256:ed4382e4d2b4ce0fa7136d5efe94cc0f606813a0fb1f3d12ecbaf92aad85e967"
+                "sha256:22b956b5ada7886f51431b6d6b026b5046b086414316ac988284fb7df6bf9811",
+                "sha256:bf0b06bc50bf83f4a9b929c781cb85991a153743041b971e809648680792dcd0",
+                "sha256:eb0686591452cf17ca4702e9d03509b187c85e0f8034b7dc591a82ee05f2655f"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==2.2.1.post1"
+            "version": "==2.3.0"
         },
         "greenlet": {
             "hashes": [
@@ -815,6 +815,7 @@
                 "sha256:b1704e0847db01817624a6b86766967f552dd9dbf3afba4004409f908dcc84e6",
                 "sha256:cc46fce86607580867bdc3361ad462bab9c222ef042d3da86f2fb333e1d916c5"
             ],
+            "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==2.6.4"
         },

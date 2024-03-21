@@ -13,6 +13,7 @@ requests = "*"
 langchainhub = "*"
 google-search-results = "*"
 gpt4all = "*"
+pydantic = "*"
 
 [dev-packages]
 

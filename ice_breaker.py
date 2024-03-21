@@ -3,21 +3,28 @@ from langchain.chains import LLMChain
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 
-
+from output_parsers import person_intel_parser, PersonIntel
 from third_parties.linkedin import scrape_linkefin_profile
 from third_parties.gist import get_gist_data
 from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 
 
-def ice_break(name: str) -> str:
+def ice_break(name: str) -> PersonIntel:
     summary_template = """
     given the Linkedin information {information} about a person I want you to create:
     1. A short summary
     2. two intresting facts about them
+    3. A topic that may interest them
+    4. 2 creative ice breakers to open a conversation with them
+    \n{format_instructions}
     """
 
     summary_prompt_template = PromptTemplate(
-        input_variables=["information"], template=summary_template
+        input_variables=["information"],
+        template=summary_template,
+        partial_variables={
+            "format_instructions": person_intel_parser.get_format_instructions()
+        },
     )
 
     llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
@@ -36,12 +43,11 @@ def ice_break(name: str) -> str:
 
     linkedin_data = scrape_linkefin_profile(linkedin_profile_url)
 
-    result = (chain.run(information=linkedin_data))
-    print(result)
-    return result
+    result = chain.run(information=linkedin_data)
+    return person_intel_parser.parse(result)
 
 
 if __name__ == "__main__":
     print("Hello Langchain!")
 
-    ice_break(name="Enrico Medeiros")
+    result = ice_break(name="Enrico Medeiros")
