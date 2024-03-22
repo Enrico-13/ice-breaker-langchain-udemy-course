@@ -27,9 +27,9 @@ def scrape_linkefin_profile(linkedin_profile_url: str):
             "similarly_named_profiles",
         ]
     }
-    if data.get("groups"):
-        for group_dict in data.get("groups"):
-            group_dict.pop("profile_pic_url")
+    # if data.get("groups"):
+    #     for group_dict in data.get("groups"):
+    #         group_dict.pop("profile_pic_url")
 
     return data
 

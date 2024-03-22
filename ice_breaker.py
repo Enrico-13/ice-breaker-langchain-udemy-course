@@ -31,20 +31,25 @@ def ice_break(name: str) -> PersonIntel:
 
     chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
-    # gist_data = get_gist_data(
-    #     "https://gist.githubusercontent.com/emarco177/0d6a3f93dd06634d95e46a2782ed7490/raw/fad4d7a87e3e934ad52ba2a968bad9eb45128665/eden-marco.json"
-    # )
+    gist_data = get_gist_data(
+        "https://gist.githubusercontent.com/emarco177/0d6a3f93dd06634d95e46a2782ed7490/raw/fad4d7a87e3e934ad52ba2a968bad9eb45128665/eden-marco.json"
+    )
 
     # print(chain.run(information=gist_data))
 
-    linkedin_profile_url = linkedin_lookup_agent(name="Enrico Medeiros")
+    # linkedin_profile_url = linkedin_lookup_agent(name)
 
     # print(linkedin_profile_url)
 
-    linkedin_data = scrape_linkefin_profile(linkedin_profile_url)
+    # linkedin_data = scrape_linkefin_profile(linkedin_profile_url)
 
-    result = chain.run(information=linkedin_data)
-    return person_intel_parser.parse(result)
+    # result = chain.run(information=linkedin_data)
+    result = chain.run(information=gist_data)
+
+    gist_data["profile_pic_url"] = 'https://media.licdn.com/dms/image/C4D03AQGlv35ItbkHBw/profile-displayphoto-shrink_400_400/0/1610187870291?e=1716422400&v=beta&t=Hb9E0lFt9Ivhz7JhpoZ4h-Jf0KMDpncL21GJ2wrQCT8'
+
+    # return person_intel_parser.parse(result), linkedin_data.get("profile_pic_url")
+    return person_intel_parser.parse(result), gist_data.get("profile_pic_url")
 
 
 if __name__ == "__main__":
